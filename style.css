@@ -1,0 +1,91 @@
+body{
+    height: 100vh;
+    margin: 0%;
+    padding: 0%;
+    /* overflow: hidden; */
+ }
+ header{
+    height: 300px;
+    width: 100%;
+    background-image: linear-gradient(rgba(194, 103, 217, 0.7),rgba(141, 14, 226, 0.9)),url(https://c02.purpledshub.com/uploads/sites/41/2021/08/mountains-7ddde89.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+ }
+ .tasks{
+    height: 50vh;
+    /* width: 80%; */
+    top: 30%;
+    left: 50%;
+    background-color: white;
+    overflow-y: scroll;
+    transform: translateY(-40px);
+    padding: 20px;
+    /* z-index: -1; */
+ }
+ .form-btn{
+    background-color: rgba(255, 255, 255, 0.3);
+    color: white;
+    width: 50%;
+ }
+ .form-btn:hover{
+    background-color: rgba(255, 255, 255, 0.4);
+    color: white;
+ }
+ .task {
+    margin-top: 20px;
+    background-color: #f2f0f0;
+    padding: 20px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 10px;
+    transition: .7s ease;
+    animation: task-animation .5s;
+ }
+ @keyframes task-animation{
+     0%{
+        transform: translateY(10px);
+     }
+     100%{
+        transform: translateY(0px);
+     }
+ }
+ #input-task{
+  min-width: 400px;
+ }
+ .task-btn{
+    background-color: rgb(154, 67, 236);
+    width: 60px;
+ }
+ .task-btn:hover{
+  background-color: blueviolet;
+ }
+ 
+ .status{
+  color: white;
+   padding: 1px 15px;
+   height: 37px;
+   background-color: rgb(236, 61, 61);
+   /* display: flex; */
+ }
+ .completed{
+  background-color: rgb(22, 186, 22);
+  cursor: auto;
+ }
+ .status:focus{
+  background-color: rgb(22, 186, 22) !important;
+ }
+ .remove{
+   transform: translateX(-30px);
+ }
+ #time{
+  font-size: small;
+ }
+ #time-details{
+  color:blueviolet;
+ }
+
+ .show{
+    display: block !important;
+ }

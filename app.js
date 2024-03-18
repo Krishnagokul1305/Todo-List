@@ -6,10 +6,13 @@ const timeDetails=document.querySelector('#time-details')
 const text=document.querySelector('.dummy-text')
 const statusBtn=document.querySelectorAll('.status')
 const taskComplete=document.querySelector('#task-incomplete')
+const dropDownBtn=document.querySelector('#dropdownMenuLink')
+const dropDown=document.querySelector('.dropdown-menu')
 formBtn.addEventListener('click',addTask)
 
 let ampm="AM"
 const dayarr= ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
+timeDetails.innerHTML=`${dayarr[new Date().getDay()]} <span id="time" class="text-body-secondary ms-1">${gettime()}</span>`
 let tasks=[];
 let count=0;
 //adding tasks
@@ -34,7 +37,6 @@ function addTask(){
 }
 //displaying the tasks
 function Uiupdate(obj){
-    console.log(obj)
     const html=
    `<div class="task shadow task-animation">
     <div class="task-description d-flex justify-content-center">
@@ -55,6 +57,7 @@ function Uiupdate(obj){
         </button>
     </div>
 </div>`
+    timeDetails.innerHTML=`${dayarr[new Date().getDay()]} <span id="time" class="text-body-secondary ms-1">${gettime()}</span>`
     taskContainer.insertAdjacentHTML('beforeend',html)
 }
 document.addEventListener('click',function(e){
@@ -67,6 +70,7 @@ if(target){
 function removeTask(e){
 const container=e.target.closest('.task')
 container.classList.add('remove')
+container.querySelector('.status').classList.contains('completed')?{}:taskCounter(false);
 setTimeout(()=>{
     container.remove()
 },200)
@@ -84,14 +88,14 @@ function gettime(){
     }
     return(`${hours.toString().padStart(2,"0")}:${minutes.toString().padStart(2,"0")} ${ampm}`)
 }
+timeDetails.innerHTML=`${dayarr[new Date().getDay()]} <span id="time" class="text-body-secondary ms-1">${gettime()}</span>`
 //day details update
-    timeDetails.innerHTML=`${dayarr[new Date().getDay()]} <span id="time" class="text-body-secondary ms-1">${gettime()}</span>`
 function completionStatus(){
     const status=this.closest('.task')
     const taskval=this.closest('.inp')
     status.querySelector('.status').classList.toggle('completed')
     const currentobjindex=tasks.findIndex(obj=>obj.taskvalue==taskval.textContent.trim())
-    console.log(currentobjindex,)
+
   if(this.checked){
     tasks[currentobjindex].status="completed"
     status.style.opacity='.5'
@@ -117,3 +121,4 @@ function taskCounter(incomplete){
     }
     taskComplete.textContent=count
 }
+
