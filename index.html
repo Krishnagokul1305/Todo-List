@@ -23,8 +23,8 @@
         background-size: cover;
      }
      .tasks{
-        min-height: 400px;
-        width: 80%;
+        height: 50vh;
+        /* width: 80%; */
         top: 30%;
         left: 50%;
         background-color: white;
@@ -33,17 +33,14 @@
         padding: 20px;
         /* z-index: -1; */
      }
-     .btn{
+     .form-btn{
         background-color: rgba(255, 255, 255, 0.3);
         color: white;
         width: 50%;
      }
-     .btn:hover{
+     .form-btn:hover{
         background-color: rgba(255, 255, 255, 0.4);
         color: white;
-     }
-     .container{
-        height: 500px;
      }
      .task {
         margin-top: 20px;
@@ -103,7 +100,7 @@
 <body>
     <div class="m-0 p-0">
     <header class="d-flex align-items-center flex-column justify-content-center">
-     <h1 class="text-light mx-auto mb-4">T O D A Y</h1>
+     <h1 class="text-light mx-auto mb-4">T O D O</h1>
      <div class="d-flex justify-content-center align-items-center">
       <input type="text" class="form-control m-auto" id="input-task">
        <button class="btn ms-3 form-btn">Add Task</button>
@@ -115,9 +112,22 @@
              <h4 class=" mt-1 ms-3" id="time-details"></h4> 
                 <p class="text-center mt-5 dummy-text">no task have been added yet</p>
           </div>
+      <div class="d-flex align-items-center" style="justify-content: space-between;">
+          <div class="dropdown">
+            <a class="btn btn-secondary dropdown-toggle  me-auto" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Sort By
+            </a>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+              <a class="dropdown-item" href="#">Action</a>
+              <a class="dropdown-item" href="#">Another action</a>
+              <a class="dropdown-item" href="#">Something else here</a>
+            </div>
+          </div>
+         
+          <p class="text-body-secondary">Task incomplete : <span id="task-incomplete">0</span></p>
+          
         </div>
-        <div class="dummy" data-index="10">
-
         </div>
+      
 </body>
 </html>

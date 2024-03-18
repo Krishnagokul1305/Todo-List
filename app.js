@@ -5,13 +5,13 @@ const taskbtn=document.querySelector('.task-btn')
 const timeDetails=document.querySelector('#time-details')
 const text=document.querySelector('.dummy-text')
 const statusBtn=document.querySelectorAll('.status')
+const taskComplete=document.querySelector('#task-incomplete')
 formBtn.addEventListener('click',addTask)
 
 let ampm="AM"
 const dayarr= ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
-
 let tasks=[];
-
+let count=0;
 //adding tasks
 function addTask(){
     const taskvalue=taskInput.value.trim()
@@ -23,14 +23,11 @@ function addTask(){
     text.remove()
     tasks.push({taskvalue,time,status:"incomplete"})
     Uiupdate(tasks[tasks.length-1])
-
+    taskCounter(true)
     //checkbox input functionality
     const statusButton=document.querySelectorAll('.status-btn')
     statusButton.forEach((btn)=>{
         btn.addEventListener('click',completionStatus)
-    })
-    tasks.find(obj=>{
-        obj.taskvalue==taskvalue
     })
     taskInput.value=""
 }
@@ -99,13 +96,24 @@ function completionStatus(){
     tasks[currentobjindex].status="completed"
     status.style.opacity='.5'
     taskval.style.textDecoration="line-through"
+    taskCounter(false)
     status.querySelector('.status').innerHTML="completed"
   }
   else{
     tasks[currentobjindex].status="incomplete"
     taskval.style.textDecoration="none"
     status.style.opacity='1'
+    taskCounter(true)
     status.querySelector('.status').innerHTML="incomplete"
   }
 }
-console.log(document.querySelector('.dummy').dataset.index)
+//task counter and ui update
+function taskCounter(incomplete){
+    if(incomplete){
+        count++;
+    }
+    else{
+        count>0? count--:count=0;
+    }
+    taskComplete.textContent=count
+}
